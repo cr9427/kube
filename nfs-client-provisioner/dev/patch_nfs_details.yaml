@@ -11,6 +11,8 @@ spec:
       containers:
         - name: nfs-client-provisioner
           env:
+            - name: PROVISIONER_NAME
+              value: nas.crylle.local/nfs
             - name: NFS_SERVER
               value: 192.168.1.239
             - name: NFS_PATH

@@ -11,12 +11,14 @@ spec:
       containers:
         - name: nfs-client-provisioner
           env:
+            - name: PROVISIONER_NAME
+              value: nas.crylle.local/nfs
             - name: NFS_SERVER
-              value: nas
+              value: nas.crylle.local
             - name: NFS_PATH
               value: /kubedata
       volumes:
         - name: nfs-client-root
           nfs:
-            server: nas
+            server: nas.crylle.local
             path: /kubedata
