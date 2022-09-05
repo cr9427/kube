@@ -6,5 +6,4 @@ bases:
   - github.com/kubernetes-sigs/nfs-subdir-external-provisioner//deploy
 
 patchesStrategicMerge:
-  - class.yaml
   - patch_nfs_details.yaml
