@@ -4,5 +4,5 @@ namespace: infra-svc
 resources:
   - namespace.yaml
   - pvc.yaml
-  - pod.yml
-  - service.yml
+  - pod.yaml
+  - service.yaml

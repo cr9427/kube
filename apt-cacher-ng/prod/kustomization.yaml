@@ -5,4 +5,6 @@ bases:
   - ../base
 
 patchesStrategicMerge:
+  - pvc.yaml
+  - service.yaml
   - patch_pod_details.yaml

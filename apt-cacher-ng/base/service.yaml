@@ -4,8 +4,12 @@ metadata:
   name: apt-cacher-ng
   labels:
     name: apt-cacher-ng
+  annotations:
+    etallb.universe.tf/allow-shared-ip: "key-99"
 spec:
   type: LoadBalancer
+  loadBalancerIP: 1.1.1.1
+  ipFamilyPolicy: PreferDualStack
   ports:
     - port: 3142
       targetPort: 3142
