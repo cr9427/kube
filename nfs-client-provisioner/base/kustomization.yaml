@@ -5,4 +5,5 @@ resources:
   - namespace.yaml
   - storageclass-archived.yaml
   - storageclass-not-archived.yaml
+#  - storageclass-archived-retained.yaml
   - storageclass-not-archived-retained.yaml
