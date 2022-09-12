@@ -51,7 +51,7 @@ serviceDns:
   externalTrafficPolicy: Local
 
   # -- A fixed `spec.loadBalancerIP` for the DNS Service
-  loadBalancerIP: "192.168.1.98"
+  loadBalancerIP: "192.168.1.81"
   # -- A fixed `spec.loadBalancerIP` for the IPv6 DNS Service
   loadBalancerIPv6: ""
 
@@ -207,7 +207,7 @@ persistentVolumeClaim:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: "managed-nfs-storeage-archived"
+  storageClass: "managed-nfs-storeage"
 
   ## If subPath is set mount a sub folder of a volume instead of the root of the volume.
   ## This is especially handy for volume plugins that don't natively support sub mounting (like glusterfs).
