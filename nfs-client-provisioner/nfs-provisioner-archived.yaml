@@ -9,7 +9,7 @@ imagePullSecrets: []
 
 nfs:
   server: nas
-  path: /kubedata
+  path: /kubedata/production
   mountOptions:
   volumeName: nfs-subdir-external-provisioner-root
   # Reclaim policy for the main nfs volume

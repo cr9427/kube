@@ -406,7 +406,7 @@ service:
   # ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/#services
   ipFamilies:
     - IPv4
-    - IPv6
+  #  - IPv6
 
 ## Create HorizontalPodAutoscaler object.
 ##

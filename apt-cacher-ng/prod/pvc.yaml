@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: apt-cacher-ng-data
 spec:
-  storageClassName: managed-nfs-storeage-not-archived
+  storageClassName: managed-nfs-storage
   accessModes:
     - ReadWriteOnce
   resources:
