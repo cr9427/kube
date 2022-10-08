@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: apt-cacher-ng
-spec:
-  volumes:
-    - name: data
-      persistentVolumeClaim:
-        claimName: apt-cacher-ng-data 

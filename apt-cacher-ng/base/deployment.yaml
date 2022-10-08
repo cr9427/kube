@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: "--- wip ---"
+  labels:
+    name: apt-cacher-ng
+  name: apt-cacher-ng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: apt-cacher-ng
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 2
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        name: apt-cacher-ng
+    spec:
+      containers:
+      - name: apt-cacher-ng
+        image: sameersbn/apt-cacher-ng:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3142
+            protocol: TCP
+        volumeMounts:
+          - mountPath: /var/cache/apt-cacher-ng
+            name: data
+          - mountPath: /etc/localtime
+            name: tz-config
+#        args:
+#          - -e
+#        env:
+#          - name: TZ
+#            value: "Europe/Berlin"
+
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: apt-cacher-ng
+      - name: tz-config
+        hostPath:
+          path: /usr/share/zoneinfo/Europe/Prague
+          type: File

@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: ingressroutetcp.crd
+spec:
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: apt-cacher-ng
+          port: 3142

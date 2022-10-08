@@ -2,4 +2,4 @@ influx
 dashboard
 grafana
 homebridge
-apt-cache
+pihole via traefik

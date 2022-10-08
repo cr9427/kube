@@ -1,11 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: apt-cacher-ng-data
+  name: apt-cacher-ng
 spec:
-  storageClassName: managed-nfs-storeage-not-archived
+  storageClassName: managed-nfs-storage
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
