@@ -3,7 +3,8 @@ image:
   name: traefik
   # defaults to appVersion
   tag: ""
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+#  pullPolicy: IfNotPresent
 
 #
 # Configure the deployment
@@ -71,8 +72,8 @@ podDisruptionBudget:
 # Use ingressClass. Ignored if Traefik version < 2.3 / kubernetes < 1.18.x
 ingressClass:
   # true is not unit-testable yet, pending https://github.com/rancher/helm-unittest/pull/12
-  enabled: false
-  isDefaultClass: false
+  enabled: true
+  isDefaultClass: true
   # Use to force a networking.k8s.io API Version for certain CI/CD applications. E.g. "v1beta1"
   fallbackApiVersion: ""
 
@@ -109,7 +110,7 @@ ingressRoute:
     labels: {}
 
 rollingUpdate:
-  maxUnavailable: 1
+  maxUnavailable: 0
   maxSurge: 1
 
 # Customize liveness and readiness probe values.
@@ -323,7 +324,7 @@ ports:
     # Port Redirections
     # Added in 2.2, you can make permanent redirects via entrypoints.
     # https://docs.traefik.io/routing/entrypoints/#redirection
-    # redirectTo: websecure
+    redirectTo: websecure
   websecure:
     port: 8443
     # hostPort: 8443
@@ -339,10 +340,10 @@ ports:
     # Set TLS at the entrypoint
     # https://doc.traefik.io/traefik/routing/entrypoints/#tls
     tls:
-      enabled: false
+      enabled: true
       # this is the name of a TLSOption definition
       options: ""
-      certResolver: ""
+      certResolver: "pebble"
       domains: []
       # - main: example.com
       #   sans:
@@ -444,7 +445,7 @@ persistence:
   enabled: true
   name: data
 #  existingClaim: ""
-  accessMode: ReadWriteOnce
+  accessMode: ReadWriteMany
   size: 128Mi
   storageClass: "managed-nfs-storage"
   path: /data
