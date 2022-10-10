@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: "--- wip ---"
+  labels:
+    name: homebridge
+  name: homebridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: homebridge
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 2
+  template:
+    metadata:
+      labels:
+        name: homebridge
+    spec:
+      containers:
+      - name: homebridge
+        image: oznu/homebridge:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: TZ
+            value: "Europe/Berlin"
+          - name: HOMEBRIDGE_CONFIG_UI_PORT
+            value: "8581"
+          - name: ENABLE_AVAHI
+            value: "1"
+        volumeMounts:
+          - mountPath: /homebridge
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: homebridge
+
+#        ports:
+#          - containerPort: 8581
+#            protocol: TCP
+

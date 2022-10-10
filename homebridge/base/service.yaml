@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homebridge
+  labels:
+    name: homebridge
+spec:
+  type: ClusterIP
+  ipFamilyPolicy: PreferDualStack
+  ports:
+    - port: 51133
+      targetPort: 51133
+      protocol: TCP
+      name: api
+    - port: 8581
+      targetPort: 8581
+      protocol: TCP
+      name: webif
+  selector:
+    name: homebridge
